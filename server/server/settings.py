@@ -68,7 +68,7 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'static/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Sets the React build
 STATICFILES_DIRS = (
-    os.path.join(os.path.join(BASE_DIR, 'web'), 'build', 'static')
+    os.path.join(BASE_DIR, 'static', 'build', 'static'),
 )
-

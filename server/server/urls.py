@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Views
+from server import views as index_views
 from user import views as user_views
 
 # Wire up our API using automatic URL routing.
@@ -33,4 +34,7 @@ urlpatterns = [
     url(r'^api/auth/', include('rest_auth.urls')),
     url(r'^api/auth/registration/', include('rest_auth.registration.urls')),
     # url(r'^api/', include(ROUTER.urls, namespace='api')),
+
+    # This needs to be the last URL in order for pushState to work
+    url(r'^', index_views.index, name="index"),
 ]

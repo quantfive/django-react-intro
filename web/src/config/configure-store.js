@@ -13,7 +13,7 @@ import rootReducer from '../redux'
 
 export const history = createHistory()
 
-const enhancers = []
+// const enhancers = []
 const middleware = [
   thunk,
   routerMiddleware(history),
