@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Views
-from server.user import views as user_views
+from user import views as user_views
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
