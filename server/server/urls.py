@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Views
-from user import views as user_views
+from server.user import views as user_views
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -30,7 +30,7 @@ from user import views as user_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^/api/auth/', include('rest_auth.urls')),
-    url(r'^/api/auth/registration/', include('rest_auth.registration.urls')),
-    url(r'^api/', include(ROUTER.urls, namespace='api')),
+    url(r'^api/auth/', include('rest_auth.urls')),
+    url(r'^api/auth/registration/', include('rest_auth.registration.urls')),
+    # url(r'^api/', include(ROUTER.urls, namespace='api')),
 ]
