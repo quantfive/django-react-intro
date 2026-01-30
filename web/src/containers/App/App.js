@@ -11,6 +11,7 @@ import { withRouter } from 'react-router';
 
 // Containers
 import Home from '../home/Home';
+import Analytics from '../analytics/Analytics';
 
 // Router
 import ScrollToTop from '../router/ScrollToTop';
@@ -22,6 +23,7 @@ class App extends Component {
         <ScrollToTop>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/analytics' component={Analytics} />
           </Switch>
         </ScrollToTop>
       </div>

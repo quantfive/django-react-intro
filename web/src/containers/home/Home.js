@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 // Stylesheets
 import './stylesheets/Home.css';
@@ -25,6 +26,11 @@ class Home extends React.Component {
         <p className={css(styles.introText)}>
           To get started, edit <code>src/containers/app/App.js</code> and save to reload.
         </p>
+        <div className={css(styles.linkContainer)}>
+          <Link to="/analytics" className={css(styles.analyticsLink)}>
+            View Analytics Dashboard
+          </Link>
+        </div>
       </div>
     );
   }
@@ -47,6 +53,24 @@ var styles = StyleSheet.create({
   },
   introText: {
     'font-size': 'large',
+  },
+  linkContainer: {
+    marginTop: '20px',
+    textAlign: 'center',
+  },
+  analyticsLink: {
+    display: 'inline-block',
+    padding: '12px 24px',
+    backgroundColor: '#667eea',
+    color: 'white',
+    textDecoration: 'none',
+    borderRadius: '6px',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    transition: 'background-color 0.3s ease',
+    ':hover': {
+      backgroundColor: '#764ba2',
+    },
   },
 });
 

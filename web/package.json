@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "aphrodite": "^1.2.3",
+    "posthog-js": "^1.336.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",

@@ -6,6 +6,7 @@ import './index.css';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { configure, history } from './config/configure-store';
+import './utils/posthog';
 
 const store = configure();
 
