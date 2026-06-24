@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-06-24T06:47:00Z",
+  "origin": "bootstrap",
+  "repair_count": 0,
+
+  "dockerfile_path": "Dockerfile.codepress",
+  "port": 8000,
+
+  "validation_path": "/api/auth/login/",
+  "validation_status_codes": [200, 301, 302, 404, 405],
+
+  "required_vault_keys": [],
+  "env_var_map": {},
+  "static_env_vars": {},
+
+  "services": [],
+
+  "input_checksums": {
+    "dockerfile": "dd0fe78c2c6f455d",
+    "dependency_manifest": "81916a6062098028"
+  },
+
+  "system_packages": [],
+
+  "known_fixes": [
+    "setuptools<60 required: django-allauth 0.33.0 uses setuptools.convert_path, removed in setuptools 60+",
+    "python:3.7-slim required: Django 1.11 has SyntaxError in admin/widgets.py on Python 3.8+ (generator expression parenthesization tightened)",
+    "django==1.11.29 required: Django 1.11.5 has Python 3.7 incompatibilities fixed in 1.11.6+"
+  ],
+
+  "discovery_notes": "Django 1.11.29 + SQLite served via Python 3.7 dev server on port 8000. The build context is the server/ subdirectory (not the repo root) — pass workspaceDir=<repo_root>/server to build_and_start_app_server. The repo also has a React frontend in web/ (Create React App) that copies its build into server/static/build/, but the Docker image omits it since the API endpoints work independently. No external services or secrets required."
+}
