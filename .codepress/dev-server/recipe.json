@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-06-24T06:18:00Z",
+  "discovery_branch": "master",
+  "frontends": [
+    {
+      "label": "web",
+      "working_dir": "web",
+      "dockerfile_path": ".codepress/dev-server/Dockerfile.web",
+      "dev_command": "yarn start",
+      "framework": "cra",
+      "package_manager": "yarn",
+      "dev_port": 3000,
+      "system_packages": [],
+      "size": "small"
+    }
+  ]
+}
