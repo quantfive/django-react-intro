@@ -7,7 +7,7 @@
       "label": "web",
       "working_dir": "web",
       "dockerfile_path": ".codepress/dev-server/Dockerfile.web",
-      "dev_command": "yarn start",
+      "dev_command": "sh -c 'HOST=\"${CODEPRESS_BIND_HOST:-0.0.0.0}\" WDS_SOCKET_PORT=\"$CODEPRESS_HMR_CLIENT_PORT\" yarn start'",
       "prebuild_command": "",
       "prebuild_inputs": [],
       "framework": "cra",
