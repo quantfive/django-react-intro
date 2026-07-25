@@ -21,11 +21,10 @@ WORKDIR /app
 # dependencies at run time (squashfs hydration, or `yarn install
 # --frozen-lockfile` inside this image against the bind-mounted checkout).
 #
-# No corepack shim is activated on purpose: `web/` uses Yarn Classic (yarn.lock
-# v1) and declares no `packageManager`, so the yarn 1.x binary that already ships
-# in this base image is the right one. Enabling a corepack shim here would make a
-# MicroVM cold start try to download a package manager from the registry before
-# the dev command could run.
+# Enable Corepack so the runtime consistently resolves Yarn through the supported
+# package-manager shim. The app has no pinned `packageManager` field, so this
+# intentionally activates the bundled default rather than fetching a version.
+RUN corepack enable
 
 # HMR + bind config — values come from the runtime, never hardcoded.
 ENV HOSTNAME=0.0.0.0 \
