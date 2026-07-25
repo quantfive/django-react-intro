@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-07-25T20:05:57Z",
+  "discovery_branch": "codepress/dev@codepress.dev/bootstrap-live-dev-server-artifacts-26adf615",
+  "frontends": [
+    {
+      "label": "web",
+      "working_dir": "web",
+      "dockerfile_path": ".codepress/dev-server/Dockerfile.web",
+      "dev_command": "sh -c 'HOST=\"${CODEPRESS_BIND_HOST:-0.0.0.0}\" PORT=\"${PORT:-3000}\" BROWSER=none DANGEROUSLY_DISABLE_HOST_CHECK=true WDS_SOCKET_PORT=\"${CODEPRESS_HMR_CLIENT_PORT:-443}\" NODE_OPTIONS=\"${NODE_OPTIONS:-} --openssl-legacy-provider\" yarn start'",
+      "prebuild_command": "",
+      "prebuild_inputs": [],
+      "framework": "cra",
+      "package_manager": "yarn",
+      "install_command": "yarn install --frozen-lockfile",
+      "dependency_manifests": ["web/yarn.lock"],
+      "dev_port": 3000,
+      "system_packages": ["procps"],
+      "size": "medium"
+    }
+  ]
+}
