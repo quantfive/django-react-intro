@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-07-25T00:00:00Z",
+  "discovery_branch": "codepress/dev@codepress.dev/bootstrap-live-dev-server-artifacts-89c482d0",
+  "frontends": [
+    {
+      "label": "web",
+      "working_dir": "web",
+      "dockerfile_path": ".codepress/dev-server/Dockerfile.web",
+      "dev_command": "yarn start",
+      "prebuild_command": "",
+      "prebuild_inputs": [],
+      "framework": "cra",
+      "package_manager": "yarn",
+      "install_command": "yarn install --frozen-lockfile",
+      "dependency_manifests": [
+        "web/yarn.lock"
+      ],
+      "dev_port": 3000,
+      "system_packages": [
+        "procps"
+      ],
+      "size": "medium"
+    }
+  ]
+}
