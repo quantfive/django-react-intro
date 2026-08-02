@@ -71,3 +71,6 @@ ENV PATH="/app/web/node_modules/.bin:/app/node_modules/.bin:${PATH}"
 # to md4, which OpenSSL 3 (Node 17+) removed — if you upgrade react-scripts, add
 # NODE_OPTIONS=--openssl-legacy-provider or set a modern `output.hashFunction`.
 CMD ["sh", "-c", "HOST=\"${CODEPRESS_BIND_HOST:-0.0.0.0}\" WDS_SOCKET_PORT=\"${CODEPRESS_HMR_CLIENT_PORT:-443}\" yarn start"]
+
+# QA G6 blocked-bake trigger (temporary, will revert)
+ENV CODEPRESS_QA_G6_BAKE=20260802-blocked-wake
