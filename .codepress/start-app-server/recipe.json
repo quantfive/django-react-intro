@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-08-06T18:37:57Z",
+  "origin": "repair",
+  "repair_count": 1,
+  "dockerfile_path": "Dockerfile",
+  "port": 8000,
+  "validation_status_codes": [200, 301, 302, 404],
+  "input_checksums": {
+    "dockerfile": "55b86d98d1d0e26a",
+    "dependency_manifest": "a4af380b1d34c482"
+  },
+  "system_packages": [],
+  "known_fixes": [
+    "The legacy CRA postbuild hook writes into server/static/build, so the Dockerfile creates server/static before running yarn build.",
+    "Django uses a repository-local SQLite database and the container runs as nobody, so the Dockerfile chowns /app/server to UID 65534.",
+    "The frontend lockfile requires Yarn 1.22.22 and the legacy dependency tree needs the image build to ignore modern Playwright engine metadata.",
+    "Django auth/admin routes require the initial SQLite schema, so the Dockerfile applies migrations before startup."
+  ],
+  "discovery_notes": "This repository combines a Django 1.11.5 backend with a Create React App 1.0.10 frontend under web/. The Dockerfile builds the React bundle with Node 18, copies it into Django's static/build directory, installs the locked Python 3.6-era dependencies, and serves the root route with Django's development WSGI server on port 8000. The backend uses local SQLite and exposes no configured remote service or vault secret dependency."
+}
