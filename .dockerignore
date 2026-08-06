@@ -1,0 +1,15 @@
+.git
+.github
+.claude
+.codepress
+node_modules
+web/node_modules
+web/build
+server/static/build
+server/.venv
+**/__pycache__
+**/*.pyc
+*.log
+.env
+.env.*
+!.env.example
