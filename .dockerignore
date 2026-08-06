@@ -1,0 +1,13 @@
+.git
+.github
+.claude
+.agents
+.codex
+node_modules
+web/node_modules
+web/build
+server/.venv
+server/__pycache__
+server/*/__pycache__
+server/db.sqlite3
+*.log

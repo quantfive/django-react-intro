@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-08-06T21:12:43Z",
+  "origin": "bootstrap",
+  "repair_count": 0,
+  "dockerfile_path": "Dockerfile.codepress",
+  "port": 3000,
+  "app_name": "web",
+  "validation_path": "/",
+  "validation_status_codes": [200, 301, 302, 404],
+  "static_env_vars": {
+    "HOST": "0.0.0.0",
+    "PORT": "3000",
+    "BROWSER": "none",
+    "DANGEROUSLY_DISABLE_HOST_CHECK": "true",
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+  "input_checksums": {
+    "dockerfile": "34367fcd930b90e4",
+    "dependency_manifest": "e334e8cea064856b"
+  },
+  "system_packages": ["procps"],
+  "known_fixes": [
+    "The existing .codepress/dev-server/Dockerfile.web is a thin Live Dev Server image without source or dependency installation; generated a self-contained Dockerfile.codepress for the web frontend.",
+    "Pinned the legacy CRA toolchain to Node 18 with Yarn 1.22.22 and installed dependencies during the image build."
+  ],
+  "discovery_notes": "This repository contains a legacy Create React App frontend in web/ and a separate Django 1.11 backend in server/. The durable app-server recipe targets the existing, independently runnable web frontend on port 3000; the Django service has no canonical combined start command, has no built frontend assets, and is not part of this single-server recipe."
+}
