@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-08-06T20:07:26Z",
+  "origin": "bootstrap",
+  "repair_count": 0,
+  "dockerfile_path": "Dockerfile.codepress",
+  "port": 3000,
+  "app_name": "web",
+  "validation_path": "/",
+  "validation_status_codes": [200, 301, 302, 404],
+  "required_vault_keys": [],
+  "env_var_map": {},
+  "static_env_vars": {
+    "HOST": "0.0.0.0",
+    "BROWSER": "none",
+    "DANGEROUSLY_DISABLE_HOST_CHECK": "true"
+  },
+  "input_checksums": {
+    "dockerfile": "e5c74266935e1269",
+    "dependency_manifest": "82f2e0338f40d5f8"
+  },
+  "system_packages": [],
+  "known_fixes": [
+    "The existing Live Dev Server Dockerfile is hydration-only and cannot run as a standalone app-server image; added Dockerfile.codepress with source and lockfile installation.",
+    "The legacy CRA 1.0.10 dependency tree requires Node 18 because websocket-driver uses the legacy http_parser binding.",
+    "The official Node 18 image already provides a Corepack Yarn shim; pinned Yarn 1.22.22 with Corepack instead of replacing it globally."
+  ],
+  "discovery_notes": "This repository contains a legacy Create React App 1.0.10 frontend under web/ and a separate Django 1.11 server under server/. The only existing Dockerfile is a Live Dev Server hydration image, so the app-server recipe targets the public web frontend with a dedicated Node 18 image that copies web/ and installs web/yarn.lock in the image; no database, cache, auth, or external API is required for the rendered home page."
+}

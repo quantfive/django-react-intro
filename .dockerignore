@@ -1,0 +1,15 @@
+.git
+.github
+node_modules
+web/node_modules
+web/build
+server/.venv
+server/__pycache__
+server/**/*.pyc
+*.log
+.env
+.env.*
+!.env.example
+coverage
+web/test-results
+web/e2e/test-results
