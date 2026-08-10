@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-08-10T04:15:25Z",
+  "origin": "bootstrap",
+  "repair_count": 0,
+  "dockerfile_path": "Dockerfile",
+  "port": 3000,
+  "validation_status_codes": [
+    200,
+    301,
+    302,
+    404
+  ],
+  "input_checksums": {
+    "dockerfile": "f62f4ad864b4fcbe",
+    "dependency_manifest": "3e3a3c381db1ac9e"
+  },
+  "system_packages": [],
+  "known_fixes": [
+    "Created a standalone root Dockerfile because .codepress/dev-server/Dockerfile.web expects a bind-mounted checkout.",
+    "Pinned @playwright/test to 1.53.2 because current releases require Node 20 while the CRA image uses Node 18."
+  ],
+  "discovery_notes": "This repository contains a Create React App frontend under web/ and a Django backend under server/. The frontend is the self-contained HTTP surface chosen for this single app-server recipe because it has a working start command and the current UI does not call the Django server."
+}
