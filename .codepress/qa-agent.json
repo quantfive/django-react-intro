@@ -1,0 +1,17 @@
+{
+  "codepress_generated": true,
+  "schema_version": 1,
+  "name": "codepress-qa-agent",
+  "artifacts": [],
+  "execution": {
+    "event_driven": true,
+    "polling_required": false
+  },
+  "platform_owned": [
+    "draft_first_delivery",
+    "exact_head_qa",
+    "independent_judgment",
+    "readiness",
+    "no_auto_merge"
+  ]
+}
