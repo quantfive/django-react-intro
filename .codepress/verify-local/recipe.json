@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "setup_commands": [
+    ["python3", "-m", "pip", "install", "--user", "pipenv"],
+    ["python3", "-m", "pipenv", "--chdir", "server", "sync"],
+    ["yarn", "--cwd", "web", "install", "--frozen-lockfile"],
+    ["mkdir", "-p", "server/static"],
+    ["yarn", "--cwd", "web", "build"]
+  ],
+  "services": [
+    {
+      "id": "backend",
+      "executor": "native",
+      "command": [
+        "python3",
+        "-m",
+        "pipenv",
+        "run",
+        "python",
+        "manage.py",
+        "runserver",
+        "0.0.0.0:8000"
+      ],
+      "working_dir": "server",
+      "required": true,
+      "port": 8000,
+      "browser": false,
+      "env_defaults": {},
+      "required_bindings": [],
+      "fixtures": [
+        [
+          "python3",
+          "-m",
+          "pipenv",
+          "run",
+          "python",
+          "manage.py",
+          "migrate",
+          "--noinput"
+        ]
+      ],
+      "health": {
+        "path": "/",
+        "status_codes": [200],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "frontend",
+      "executor": "native",
+      "command": ["yarn", "start"],
+      "working_dir": "web",
+      "required": true,
+      "port": 3000,
+      "browser": true,
+      "env_defaults": {
+        "BROWSER": "none",
+        "DANGEROUSLY_DISABLE_HOST_CHECK": "true"
+      },
+      "required_bindings": [],
+      "health": {
+        "path": "/",
+        "status_codes": [200],
+        "timeout_seconds": 60
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "backend-check",
+      "executor": "native",
+      "command": [
+        "python3",
+        "-m",
+        "pipenv",
+        "run",
+        "python",
+        "manage.py",
+        "check"
+      ],
+      "working_dir": "server",
+      "timeout_seconds": 300,
+      "expected_exit_codes": [0],
+      "env_defaults": {},
+      "required_bindings": []
+    },
+    {
+      "id": "backend-tests",
+      "executor": "native",
+      "command": [
+        "python3",
+        "-m",
+        "pipenv",
+        "run",
+        "python",
+        "manage.py",
+        "test"
+      ],
+      "working_dir": "server",
+      "timeout_seconds": 900,
+      "expected_exit_codes": [0],
+      "env_defaults": {},
+      "required_bindings": []
+    },
+    {
+      "id": "frontend-tests",
+      "executor": "native",
+      "command": ["yarn", "test", "--watchAll=false"],
+      "working_dir": "web",
+      "timeout_seconds": 900,
+      "expected_exit_codes": [0],
+      "env_defaults": {
+        "CI": "true"
+      },
+      "required_bindings": []
+    },
+    {
+      "id": "frontend-build",
+      "executor": "native",
+      "command": ["yarn", "build"],
+      "working_dir": "web",
+      "timeout_seconds": 900,
+      "expected_exit_codes": [0],
+      "env_defaults": {},
+      "required_bindings": []
+    }
+  ]
+}
