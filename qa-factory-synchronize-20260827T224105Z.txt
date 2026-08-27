@@ -1,0 +1,1 @@
+Ephemeral synchronize-fence probe for PR #65; created 20260827T224105Z UTC.
