@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "bootstrapped_at": "2026-07-07T19:27:32Z",
+  "origin": "bootstrap",
+  "repair_count": 0,
+
+  "dockerfile_path": "Dockerfile",
+  "port": 8000,
+
+  "validation_status_codes": [200, 301, 302, 404],
+
+  "input_checksums": {
+    "dockerfile": "79ae4e91373124fd",
+    "dependency_manifest": "a4af380b1d34c482"
+  },
+
+  "system_packages": [],
+  "known_fixes": [
+    "web/package.json's postbuild script (`cp -r build/ ../server/static/build/`) fails if server/static doesn't exist yet — added `RUN mkdir -p /app/server/static` before `yarn build` in the frontend build stage.",
+    "Container runs at runtime as uid/gid 65534 (nobody), but files land as root during the Docker build — SQLite couldn't create db.sqlite3 in /app/server. Added `RUN chown -R 65534:65534 /app/server` in the runtime stage."
+  ],
+  "discovery_notes": "Two-app monorepo: a Django 1.11 backend at server/ (SQLite, no external services, Pipfile/Pipfile.lock via pipenv) and a Create React App frontend at web/ (react-scripts 1.0.10, yarn.lock) with no API calls of its own. The repo's own build wiring (web's postbuild script) copies the React production build into server/static/build, and Django serves that directory plus a catch-all index view — so the single canonical app server is the Django backend serving the built frontend, started via a two-stage Dockerfile (node:10 builder + python:3.6-slim runtime). No vault secrets or sidecars needed: DEBUG=True, hardcoded dev SECRET_KEY, SQLite embedded, ALLOWED_HOSTS=[] which Django's dev special-case already permits for the default 'localhost' Host header forward_app_request sends."
+}
